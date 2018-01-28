@@ -21,9 +21,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.blankj:utilcode:1.12.0'
-    implementation 'com.jude:swipebackhelper:3.1.2'
-    implementation rootProject.ext.deps.appcompatV7
-    implementation rootProject.ext.deps.annotations
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.blankj:utilcode:1.12.0'
+    compile 'com.jude:swipebackhelper:3.1.2'
+    compile rootProject.ext.deps.rxjava2
+    compile rootProject.ext.deps.rxandroid
+    compile rootProject.ext.deps.appcompatV7
+    compile rootProject.ext.deps.annotations
+    compile rootProject.ext.deps.design
+    compile rootProject.ext.deps.retrofit2
 }
