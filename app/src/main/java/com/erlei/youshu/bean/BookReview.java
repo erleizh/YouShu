@@ -1,6 +1,8 @@
 package com.erlei.youshu.bean;
 
-import com.erlei.baselibrary.base.BaseBean;
+import android.support.annotation.Keep;
+
+import com.erlei.baselibrary.base.Http;
 
 import java.util.List;
 
@@ -9,13 +11,93 @@ import java.util.List;
  * Email ： lllemail@foxmail.com
  * 书评
  */
-public class BookReview extends BaseBean {
+@Keep
+public class BookReview {
 
     private String content;
     private String createTime;
     private String score;
+    private String id;
     private User sender;
     private Book book;
     private boolean isLike;
     private List<Comment> comments;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public boolean isLike() {
+        return isLike;
+    }
+
+    public void setLike(boolean like) {
+        isLike = like;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "BookReview{" +
+                "content='" + content + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", score='" + score + '\'' +
+                ", id='" + id + '\'' +
+                ", sender=" + sender +
+                ", book=" + book +
+                ", isLike=" + isLike +
+                ", comments=" + comments +
+                '}';
+    }
 }

@@ -2,7 +2,7 @@ ext {
 
     android = [
             compileSdkVersion: 27,
-            buildToolsVersion: "27.0.1",
+            buildToolsVersion: "27.0.3",
             minSdkVersion    : 19,
             targetSdkVersion : 27,
             versionCode      : 1,
@@ -18,16 +18,17 @@ ext {
 
     deps = [
             // ------------- Android -------------
-            supportV4   : "com.android.support:support-v4:${depsVersion.support}",
-            appcompatV7 : "com.android.support:appcompat-v7:${depsVersion.support}",
-            design      : "com.android.support:design:${depsVersion.support}",
-            cardview    : "com.android.support:cardview-v7:${depsVersion.support}",
-            annotations : "com.android.support:support-annotations:${depsVersion.support}",
-            recyclerview: "com.android.support:recyclerview-v7:${depsVersion.support}",
+            supportV4             : "com.android.support:support-v4:${depsVersion.support}",
+            appcompatV7           : "com.android.support:appcompat-v7:${depsVersion.support}",
+            design                : "com.android.support:design:${depsVersion.support}",
+            cardview              : "com.android.support:cardview-v7:${depsVersion.support}",
+            annotations           : "com.android.support:support-annotations:${depsVersion.support}",
+            recyclerview          : "com.android.support:recyclerview-v7:${depsVersion.support}",
             // ------------- Other -------------
-            rxjava2     : "io.reactivex.rxjava2:rxjava:${depsVersion.rxjava2}",
-            rxandroid   : "io.reactivex.rxjava2:rxandroid:${depsVersion.rxandroid}",
-            retrofit2   : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit2}",
+            rxjava2               : "io.reactivex.rxjava2:rxjava:${depsVersion.rxjava2}",
+            rxandroid             : "io.reactivex.rxjava2:rxandroid:${depsVersion.rxandroid}",
+            retrofit2             : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit2}",
+            retrofit2RxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:${depsVersion.retrofit2}",
 
     ]
 }
