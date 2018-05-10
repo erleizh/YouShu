@@ -1,7 +1,7 @@
-package com.erlei.baselibrary.callback;
+package com.erlei.youshu.callback;
 
 
-import com.erlei.baselibrary.base.Http;
+import com.erlei.youshu.bean.Http;
 
 import io.reactivex.observers.DisposableObserver;
 

@@ -1,9 +1,9 @@
-package com.erlei.baselibrary.callback;
+package com.erlei.youshu.callback;
 
 import android.app.Activity;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.erlei.baselibrary.base.Contract;
+import com.erlei.youshu.base.Contract;
 
 /**
  * Created by lll on 2018/3/27.

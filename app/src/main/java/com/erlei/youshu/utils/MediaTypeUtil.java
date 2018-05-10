@@ -1,4 +1,4 @@
-package com.erlei.baselibrary.util;
+package com.erlei.youshu.utils;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.Iterator;
  * Created by lll on 2017/10/27.
  * 判断文件类型
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused","WeakerAccess"})
 public class MediaTypeUtil {
     // comma separated list of all file extensions supported by the media scanner
     public static String sFileExtensions;

@@ -1,23 +1,16 @@
-package com.erlei.baselibrary.base;
+package com.erlei.youshu.base;
 
 import android.content.Context;
 
-import org.reactivestreams.Publisher;
-
-import io.reactivex.Flowable;
-import io.reactivex.FlowableTransformer;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+
 
 /**
- * Created by lll on 2018/3/22.
+ * Created by lll on 2018/5/7 .
  * Email : lllemail@foxmail.com
+ * Describe : 基础契约类
  */
 @SuppressWarnings({"unchecked", "WeakerAccess", "unused"})
 public interface Contract {

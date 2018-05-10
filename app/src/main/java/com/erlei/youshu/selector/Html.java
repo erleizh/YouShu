@@ -63,7 +63,7 @@ public class Html extends HtmlNode {
     }
 
     @Override
-    protected List<Element> getElements() {
+    public List<Element> getElements() {
         return Collections.<Element>singletonList(getDocument());
     }
 

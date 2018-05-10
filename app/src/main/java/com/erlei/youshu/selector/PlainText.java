@@ -1,5 +1,7 @@
 package com.erlei.youshu.selector;
 
+import org.jsoup.nodes.Element;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,16 @@ public class PlainText extends AbstractSelectable {
             nodes.add(PlainText.create(string));
         }
         return nodes;
+    }
+
+    @Override
+    public Element getElement() {
+        throw new UnsupportedOperationException("getElement can not apply to plain text");
+    }
+
+    @Override
+    public List<Element> getElements() {
+        throw new UnsupportedOperationException("getElements can not apply to plain text");
     }
 
     @Override

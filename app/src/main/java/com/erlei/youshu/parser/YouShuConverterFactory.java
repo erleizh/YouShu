@@ -3,7 +3,6 @@ package com.erlei.youshu.parser;
 import com.blankj.utilcode.util.LogUtils;
 import com.erlei.youshu.selector.Html;
 
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -25,18 +24,20 @@ public class YouShuConverterFactory extends Converter.Factory {
     @SuppressWarnings("unchecked")
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
         LogUtils.dTag("responseBodyConverter", type, annotations.toString(), retrofit);
-        BaseParser baseParser = sParser.get(type.toString());
-        if (baseParser == null){
-            for (Annotation annotation : annotations) {
-                LogUtils.dTag("responseBodyConverter", annotation.toString());
-                if (annotation instanceof Parser){
-                    try {
-                        baseParser = (BaseParser)((Parser) annotation).value().newInstance();
-                        LogUtils.dTag("responseBodyConverter", "baseUrl" + retrofit);
-                        sParser.put(type.toString(),baseParser);
-                    } catch (InstantiationException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+
+        BaseParser baseParser = null;
+        for (Annotation annotation : annotations) {
+            LogUtils.dTag("responseBodyConverter", annotation.toString());
+            if (annotation instanceof Parser) {
+                String name = ((Parser) annotation).value().getName();
+                baseParser = sParser.get(name);
+                if (baseParser != null) break;
+                try {
+                    baseParser = (BaseParser) ((Parser) annotation).value().newInstance();
+                    LogUtils.dTag("responseBodyConverter", "baseUrl" + retrofit);
+                    sParser.put(name, baseParser);
+                } catch (InstantiationException | IllegalAccessException e) {
+                    e.printStackTrace();
                 }
             }
         }

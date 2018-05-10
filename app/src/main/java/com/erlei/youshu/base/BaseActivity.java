@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.erlei.baselibrary.base.Contract;
 import com.jude.swipbackhelper.SwipeBackHelper;
 
 /**

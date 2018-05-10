@@ -1,5 +1,7 @@
 package com.erlei.youshu.selector;
 
+import org.jsoup.nodes.Element;
+
 import java.util.List;
 
 /**
@@ -149,4 +151,8 @@ public interface Selectable {
      * @return result
      */
     public List<Selectable> nodes();
+
+
+    public Element getElement();
+    public List<Element> getElements();
 }

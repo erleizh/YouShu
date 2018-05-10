@@ -5,8 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.erlei.baselibrary.base.BaseFragment;
 import com.erlei.youshu.R;
+import com.erlei.youshu.base.BaseFragment;
 import com.erlei.youshu.bean.Book;
 import com.erlei.youshu.bean.HomeBean;
 

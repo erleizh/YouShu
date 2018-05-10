@@ -1,4 +1,4 @@
-package com.erlei.baselibrary.util;
+package com.erlei.youshu.utils;
 
 import org.reactivestreams.Publisher;
 
@@ -10,6 +10,11 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * Created by lll on 2018/5/7 .
+ * Email : lllemail@foxmail.com
+ * Describe : RxJava ObservableTransformer
+ */
 public class TransformerUtil {
 
     public static <T> ObservableTransformer<T, T> observableIoMain() {

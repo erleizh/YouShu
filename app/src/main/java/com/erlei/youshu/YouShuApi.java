@@ -1,14 +1,14 @@
 package com.erlei.youshu;
 
-import com.erlei.baselibrary.base.Http;
 import com.erlei.youshu.bean.Book;
 import com.erlei.youshu.bean.HomeBean;
+import com.erlei.youshu.bean.Http;
 import com.erlei.youshu.bean.User;
-import com.erlei.youshu.parser.BaseParser;
 import com.erlei.youshu.parser.BooksParser;
 import com.erlei.youshu.parser.HomeParser;
 import com.erlei.youshu.parser.Parser;
-import com.google.gson.reflect.TypeToken;
+import com.erlei.youshu.parser.UserParser;
+import com.erlei.youshu.parser.UserParser1;
 
 import java.util.List;
 import java.util.Map;
@@ -44,36 +44,40 @@ public interface YouShuApi {
     Observable<Http<HomeBean>> getHome();
 
     /**
-     * 获取用户详情
-     *
-     * @param id userId
-     */
-    @GET("user/{id}")
-    Observable<Http<User>> getUser(@Path("id") String id);
-
-    /**
      * 获取用户的所有评论
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/comments")
-    Flowable<String> getUserComments(@Path("id") String id);
+    Observable<Http<User>> getUserBookReview(@Path("id") String id);
+
+    /**
+     * 获取用户的所有评论-多线程
+     *
+     * @param id userId
+     */
+    @Parser(UserParser1.class)
+    @GET("user/{id}/comments")
+    Observable<Http<User>> getUserBookReview1(@Path("id") String id);
 
     /**
      * 获取用户的所有积分
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/manas")
-    Flowable<String> getUserManas(@Path("id") String id);
+    Observable<Http<User>> getUserManas(@Path("id") String id);
 
     /**
      * 获取用户的书单
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/booklist")
-    Flowable<String> getUserBookList(@Path("id") String id);
+    Observable<Http<User>> getUserBookList(@Path("id") String id);
 
 
     /**
@@ -81,24 +85,27 @@ public interface YouShuApi {
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/fans")
-    Flowable<String> getUserFans(@Path("id") String id);
+    Observable<Http<User>> getUserFans(@Path("id") String id);
 
     /**
      * 获取用户关注的书单
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/followlist")
-    Flowable<String> getUserFollowList(@Path("id") String id);
+    Observable<Http<User>> getUserFollowList(@Path("id") String id);
 
     /**
      * 获取用户关注的人
      *
      * @param id userId
      */
+    @Parser(UserParser.class)
     @GET("user/{id}/follows")
-    Flowable<String> getUserFollows(@Path("id") String id);
+    Observable<Http<User>> getUserFollows(@Path("id") String id);
 
     /**
      * 获取书单

@@ -45,6 +45,7 @@ public class Api {
         public Response intercept(@NonNull Chain chain) throws IOException {
             Request request = chain.request().newBuilder()
                     .header("User-Agent", userAgent)
+                    .header("Accept-Encoding", "gzip")
                     .build();
             return chain.proceed(request);
         }

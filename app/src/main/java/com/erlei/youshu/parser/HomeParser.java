@@ -1,15 +1,13 @@
 package com.erlei.youshu.parser;
 
-import com.erlei.baselibrary.base.Http;
 import com.erlei.youshu.bean.Book;
 import com.erlei.youshu.bean.BookReview;
 import com.erlei.youshu.bean.Category;
 import com.erlei.youshu.bean.HomeBean;
+import com.erlei.youshu.bean.Http;
 import com.erlei.youshu.bean.User;
 import com.erlei.youshu.selector.Html;
-import com.google.gson.reflect.TypeToken;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -59,7 +57,7 @@ public class HomeParser extends BaseParser<Http<HomeBean>> {
 
             String userId = userEle.attributes().get("href");
             User user = new User();
-            user.setIcon(userIcon);
+            user.setAvatar(userIcon);
             user.setId(userId.substring(6, userId.lastIndexOf("/")));
 
             elements = comment.getElementsByClass("media-body");

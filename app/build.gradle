@@ -24,7 +24,17 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':BaseLibrary')
+    implementation 'com.blankj:utilcode:1.13.5'
+    implementation 'com.jude:swipebackhelper:3.1.2'
+    implementation rootProject.ext.deps.rxjava2
+    implementation rootProject.ext.deps.rxandroid
+    implementation rootProject.ext.deps.appcompatV7
+    implementation rootProject.ext.deps.annotations
+    implementation rootProject.ext.deps.design
+    implementation rootProject.ext.deps.retrofit2
+    implementation rootProject.ext.deps.retrofit2RxJavaAdapter
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     implementation 'org.jsoup:jsoup:1.11.2'
     implementation 'com.yuyh.json:jsonviewer:1.0.4'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
@@ -33,7 +43,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.code.gson:gson:2.8.4'
-    implementation('us.codecraft:xsoup:0.3.1'){
+    implementation('us.codecraft:xsoup:0.3.1') {
         exclude group: 'org.jsoup', module: 'jsoup'
     }
 }

@@ -2,8 +2,6 @@ package com.erlei.youshu.bean;
 
 import android.support.annotation.Keep;
 
-import com.erlei.baselibrary.base.Http;
-
 import java.util.List;
 
 /**
@@ -21,7 +19,9 @@ public class BookReview {
     private User sender;
     private Book book;
     private boolean isLike;
+    private String likeNum;
     private List<Comment> comments;
+    private BookList bookList;
 
     public String getContent() {
         return content;
@@ -63,6 +63,10 @@ public class BookReview {
         this.book = book;
     }
 
+    /**
+     * 网页并没有保存这个状态，每一次刷新都重置，这个状态不可靠
+     * @return 是否喜欢过这个书评
+     */
     public boolean isLike() {
         return isLike;
     }
@@ -87,17 +91,19 @@ public class BookReview {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "BookReview{" +
-                "content='" + content + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", score='" + score + '\'' +
-                ", id='" + id + '\'' +
-                ", sender=" + sender +
-                ", book=" + book +
-                ", isLike=" + isLike +
-                ", comments=" + comments +
-                '}';
+    public BookList getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(BookList bookList) {
+        this.bookList = bookList;
+    }
+
+    public String getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(String likeNum) {
+        this.likeNum = likeNum;
     }
 }

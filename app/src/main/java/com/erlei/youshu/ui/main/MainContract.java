@@ -2,14 +2,14 @@ package com.erlei.youshu.ui.main;
 
 import android.support.annotation.NonNull;
 
-import com.erlei.baselibrary.base.Contract;
-import com.erlei.baselibrary.base.Http;
-import com.erlei.baselibrary.callback.SimpleObserver;
-import com.erlei.baselibrary.util.TransformerUtil;
 import com.erlei.youshu.Api;
+import com.erlei.youshu.base.Contract;
 import com.erlei.youshu.bean.Book;
 import com.erlei.youshu.bean.Category;
 import com.erlei.youshu.bean.HomeBean;
+import com.erlei.youshu.bean.Http;
+import com.erlei.youshu.callback.SimpleObserver;
+import com.erlei.youshu.utils.TransformerUtil;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,7 @@
 package com.erlei.youshu.parser;
 
-import com.blankj.utilcode.util.RegexUtils;
-import com.erlei.baselibrary.base.Http;
 import com.erlei.youshu.bean.Book;
+import com.erlei.youshu.bean.Http;
 import com.erlei.youshu.bean.User;
 import com.erlei.youshu.selector.Html;
 import com.erlei.youshu.selector.Selectable;
@@ -29,20 +28,19 @@ public class BooksParser extends BaseParser<Http<List<Book>>> {
         ArrayList<Book> books = new ArrayList<>();
         List<Selectable> nodes = html.xpath(xpath_books).nodes();
         for (Selectable node : nodes) {
-            Book book = new Book();
             User user = new User();
-            String name = node.xpath(xpath_author).get();
-            user.setName(name);
+            user.setName(node.xpath(xpath_author).get());
+
+
+            Book book = new Book();
             book.setAuthor(user);
-            String name1 = node.xpath(xpath_name).get();
-            book.setName(name1);
+            book.setName(node.xpath(xpath_name).get());
             book.setWordNumber(node.xpath(xpath_wordNumber).get());
             book.setLastUpdate(node.xpath(xpath_lastUpdate).get());
             book.setScore(node.xpath(xpath_score).get());
             book.setId(node.xpath(xpath_id).links().get());
             book.setCover(node.xpath(xpath_cover).get());
-            String s = node.xpath(xpath_reviewNumber).get();
-            book.setTotalBookReviewNumber(RegexUtil.getInt(s));
+            book.setTotalBookReviewNumber(RegexUtil.getInt(node.xpath(xpath_reviewNumber).get()));
             books.add(book);
         }
         http.setData(books);

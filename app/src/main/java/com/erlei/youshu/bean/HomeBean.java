@@ -1,7 +1,5 @@
 package com.erlei.youshu.bean;
 
-import com.erlei.baselibrary.base.Http;
-
 import java.util.List;
 
 /**

@@ -11,9 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.erlei.baselibrary.base.BaseActivity;
-import com.erlei.baselibrary.base.Contract;
 import com.erlei.youshu.R;
+import com.erlei.youshu.base.BaseActivity;
+import com.erlei.youshu.base.Contract;
 import com.erlei.youshu.ui.test.ApiTestFragment;
 import com.jude.swipbackhelper.SwipeBackHelper;
 

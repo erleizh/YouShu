@@ -22,7 +22,7 @@ public class HtmlNode extends AbstractSelectable {
         elements = null;
     }
 
-    protected List<Element> getElements() {
+    public List<Element> getElements() {
         return elements;
     }
 
@@ -125,6 +125,12 @@ public class HtmlNode extends AbstractSelectable {
             selectables.add(new HtmlNode(childElements));
         }
         return selectables;
+    }
+
+    @Override
+    public Element getElement() {
+        if (elements == null || elements.isEmpty())return new Element("");
+        return elements.get(0);
     }
 
     @Override

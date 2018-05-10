@@ -2,8 +2,6 @@ package com.erlei.youshu.bean;
 
 import android.support.annotation.Keep;
 
-import com.erlei.baselibrary.base.Http;
-
 import java.util.List;
 import java.util.Objects;
 
