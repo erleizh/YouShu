@@ -24,7 +24,7 @@ public class Api {
     static {
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.baseUrl(Config.BASE_URL);
-            builder.addConverterFactory(YouShuConverterFactory.create());
+        builder.addConverterFactory(YouShuConverterFactory.create());
         builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))

@@ -66,85 +66,50 @@ public class UserParser extends BaseParser<Http<User>> {
     private static final String xpath_fans_avatar = "/div[@class='col-md-6 col-lg-4 col-sm-12']/div/div/div/a[2]/img/@src";
     private static final String xpath_fans_id = "/div[@class='col-md-6 col-lg-4 col-sm-12']/div/div/div/div/a/@href";
 
-    @Override
-    protected Http<User> convert(Html html) {
-        Http<User> http = new Http<>();
-        User user = new User();
-        http.setData(user);
+@Override
+protected Http<User> convert(Html html) {
+    Http<User> http = new Http<>();
+    User user = new User();
+    http.setData(user);
 
-        //用戶信息
-        user.setAvatar(html.xpath(xpath_icon).get());
-        user.setName(html.xpath(xpath_user_name).get());
-        user.setSignature(html.xpath(xpath_signature).get());
-        user.setFollowBookListNum(html.xpath(xpath_follow_book_list_num).get());
-        user.setFansNum(html.xpath(xpath_fans_num).get());
-        user.setFollowNum(html.xpath(xpath_follow_num).get());
+    //用戶信息
+    user.setAvatar(html.xpath(xpath_icon).get());
+    user.setName(html.xpath(xpath_user_name).get());
+    user.setSignature(html.xpath(xpath_signature).get());
+    user.setFollowBookListNum(html.xpath(xpath_follow_book_list_num).get());
+    user.setFansNum(html.xpath(xpath_fans_num).get());
+    user.setFollowNum(html.xpath(xpath_follow_num).get());
 
-        String s = html.xpath(xpath_active_tab).get();
-        if (!TextUtils.isEmpty(s)) {
-            switch (s) {
-                case "动态":
-                    user.setBookReviews(new BookReviewParser().parserBookReviewList(html));
-//                    user.setBookReviews(new BookReviewParser().parserBookReviewList(html));
-                    break;
-                case "积分":
+    String s = html.xpath(xpath_active_tab).get();
+    if (!TextUtils.isEmpty(s)) {
+        switch (s) {
+            case "动态":
+                user.setBookReviews(new BookReviewParser().parserBookReviewList(html));
+                break;
+            case "积分":
 
-                    break;
-                case "书单":
-                    user.setBookList(new BookListParser().parserBookList(html));
-                    break;
-                case "粉丝":
-                    user.setFans(new FollowUserParser().parserUser(html));
-                    break;
-                case "关注书单":
-                    user.setFollowBookList(new BookListParser().parserBookList(html));
-                    break;
-                case "关注":
-                    user.setFollowUser(new FollowUserParser().parserUser(html));
-                    break;
-            }
+                break;
+            case "书单":
+                user.setBookList(new BookListParser().parserBookList(html));
+                break;
+            case "粉丝":
+                user.setFans(new FollowedUserParser().parserUser(html));
+                break;
+            case "关注书单":
+                user.setFollowBookList(new BookListParser().parserBookList(html));
+                break;
+            case "关注":
+                user.setFollowUser(new FollowedUserParser().parserUser(html));
+                break;
         }
-        return http;
     }
+    return http;
+}
 
     /**
      * 解析用戶书评
      */
     private class BookReviewParser {
-//        private UserBookReview<BookReview> parserBookReviewList(Html html) {
-//            List<Selectable> nodes = html.xpath(xpath_book_review_list).nodes();
-//            UserBookReview<BookReview> userBookReview = new UserBookReview<>();
-//            ArrayList<BookReview> bookReviews = new ArrayList<>();
-//            userBookReview.setList(bookReviews);
-//            userBookReview.setPage(1);
-//            Selectable xpath = html.xpath(xpath_book_review_next_page_key);
-//            userBookReview.setNext(xpath.regex("\\d+").get());
-//            BookReview[] reviews = new BookReview[nodes.size()];
-//            ArrayList<Observable<BookReview[]>> observables = new ArrayList<>();
-//            for (int i = 0; i < reviews.length; i++) {
-//                int finalI = i;
-//                observables.add(Observable.create((ObservableOnSubscribe<BookReview[]>) emitter -> {
-//                    Selectable node = nodes.get(finalI);
-//                    BookReview bookReview = new BookReview();
-//                    bookReview.setBook(parserBook(node));
-//                    bookReview.setContent(node.xpath(xpath_book_review_content).get());
-//                    bookReview.setBookList(parserBookList(node));
-//                    bookReview.setCreateTime(node.xpath(xpath_book_review_create_time).get());
-//                    //bookReview.setLike(node.xpath(xpath_book_review_like).match());//网页并没有保存这个状态，每一次刷新都重置
-//                    bookReview.setLikeNum(node.xpath(xpath_book_review_like_num).get());
-//                    bookReview.setScore(node.xpath(xpath_book_review_score).get());
-//                    bookReview.setId(node.xpath(xpath_book_review_id).get());
-//                    bookReviews.add(bookReview);
-//                    reviews[finalI] = bookReview;
-//                    emitter.onNext(reviews);
-//                    emitter.onComplete();
-//                }).subscribeOn(Schedulers.io()));
-//
-//            }
-//            List<BookReview> list = Arrays.asList(Observable.merge(observables).blockingLast());
-//            userBookReview.setList(list);
-//            return userBookReview;
-//        }
         private UserBookReview<BookReview> parserBookReviewList(Html html) {
             long millis = System.currentTimeMillis();
             List<Selectable> nodes = html.xpath(xpath_book_review_list).nodes();
@@ -199,7 +164,7 @@ public class UserParser extends BaseParser<Http<User>> {
 
 
     /**
-     * 解析用戶书单，关注的书单
+     * 解析用戶书单或关注的书单
      */
     private class BookListParser {
         ListBean<BookList> parserBookList(Html html) {
@@ -225,7 +190,7 @@ public class UserParser extends BaseParser<Http<User>> {
     /**
      * 解析該用戶的粉絲，和該用戶關注的人
      */
-    private class FollowUserParser {
+    private class FollowedUserParser {
         ListBean<User> parserUser(Html html) {
             ListBean<User> bean = new ListBean<>();
             ArrayList<User> lists = new ArrayList<>();

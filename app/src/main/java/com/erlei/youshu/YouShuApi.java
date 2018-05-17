@@ -44,7 +44,7 @@ public interface YouShuApi {
     Observable<Http<HomeBean>> getHome();
 
     /**
-     * 获取用户的所有评论
+     * 获取用户的所有书评-单线程
      *
      * @param id userId
      */
@@ -53,7 +53,7 @@ public interface YouShuApi {
     Observable<Http<User>> getUserBookReview(@Path("id") String id);
 
     /**
-     * 获取用户的所有评论-多线程
+     * 获取用户的所有书评-多线程
      *
      * @param id userId
      */
